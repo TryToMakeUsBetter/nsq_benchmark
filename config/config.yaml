@@ -1,0 +1,23 @@
+nsq_list:
+  - topic: dead_topic_1
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_2
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_3
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_4
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_5
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_6
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_7
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_8
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_9
+    producer_addr: 127.0.0.1:4150
+  - topic: dead_topic_10
+    producer_addr: 127.0.0.1:4150
+  - topic: normal_topic
+    producer_addr: 127.0.0.1:4150

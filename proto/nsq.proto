@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package nsq;
+
+option go_package = "nsq_benchmark/gen/nsq/v1;nsqv1";
+
+// 模拟消息
+message MqMessage {
+    string msg = 1; 
+    int32 index = 2;
+    bool is_alive = 3;
+}
+
