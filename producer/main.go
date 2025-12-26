@@ -11,6 +11,8 @@ import (
 	"github.com/nsqio/go-nsq"
 )
 
+// B分支的修改
+
 // 测试合并冲突
 // 测试合并冲突1
 // 测试合并冲突2
