@@ -15,6 +15,7 @@ import (
 // 测试合并冲突1
 // 测试合并冲突2
 // 测试合并冲突3
+// 增加了新代码
 func main() {
 	TenProducerTenTopic400Msg(core.GobalCore.NsqList)
 	//OneProducerOneTopic4000Msg(core.GobalCore.NsqList)
