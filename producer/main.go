@@ -11,6 +11,9 @@ import (
 	"github.com/nsqio/go-nsq"
 )
 
+// 10
+// 9
+
 func main() {
 	//TenProducerTenTopic400Msg(core.GobalCore.NsqList)
 	OneProducerOneTopic(core.GobalCore.NsqList)
