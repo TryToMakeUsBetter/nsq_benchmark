@@ -11,20 +11,9 @@ import (
 	"github.com/nsqio/go-nsq"
 )
 
-// B分支的修改
-// BBBB分支的修改
-// BBBB分支的修改
-// BBBB分支的修改
-
-// 测试合并冲突
-// 测试合并冲突1
-// 测试合并冲突2
-// 测试合并冲突AAAA3
-// 测试合并冲突4
-// 测试合并冲突5
 func main() {
-	TenProducerTenTopic400Msg(core.GobalCore.NsqList)
-	//OneProducerOneTopic4000Msg(core.GobalCore.NsqList)
+	//TenProducerTenTopic400Msg(core.GobalCore.NsqList)
+	OneProducerOneTopic(core.GobalCore.NsqList)
 }
 
 // 10个生产者，10个Topic，每个400个Msg
@@ -73,7 +62,7 @@ func TenProducerTenTopic400Msg(nsqList []*core.Nsq) {
 }
 
 // 1个生产者，1个Topic,4000个Msg
-func OneProducerOneTopic4000Msg(nsqList []*core.Nsq) {
+func OneProducerOneTopic(nsqList []*core.Nsq) {
 
 	var producerList []*nsq.Producer
 	for i := 0; i < len(nsqList); i++ {
@@ -85,19 +74,24 @@ func OneProducerOneTopic4000Msg(nsqList []*core.Nsq) {
 
 		producerList = append(producerList, producer)
 	}
+	producer := producerList[0]
+	topic := nsqList[0].Topic
 
-	go func(producer *nsq.Producer, topic string) {
-		for j := 0; j < 4000; j++ {
-			msg := &pb.MqMessage{
-				Msg:     time.Now().String(),
-				Index:   int32(j),
-				IsAlive: j == 4000,
-			}
-			data, _ := json.Marshal(msg)
-			err := producer.Publish(topic, data)
-			if err != nil {
-				panic(err)
-			}
+	for j := 0; j < 100; j++ {
+		isAlive := true
+		if (j >= 7 && j <= 11) || j == 15 || j == 16 {
+			isAlive = false
 		}
-	}(producerList[0], nsqList[0].Topic)
+		msg := &pb.MqMessage{
+			Msg:     time.Now().String(),
+			Index:   int32(j),
+			IsAlive: isAlive,
+		}
+		data, _ := json.Marshal(msg)
+		err := producer.Publish(topic, data)
+		if err != nil {
+			panic(err)
+		}
+	}
+
 }

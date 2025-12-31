@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	pb "nsq_benchmark/gen"
 	"nsq_benchmark/pkg/core"
@@ -38,7 +39,7 @@ func processMessage(body []byte) error {
 
 	var msg pb.MqMessage
 	json.Unmarshal(body, &msg)
-	fmt.Printf("Process message: %s,Index: %d, IsAlive: %v\n", msg.Msg, msg.Index, msg.IsAlive)
+	fmt.Printf("Process message: %s,Index: %d, IsAlive: %v\n", time.Now().String(), msg.Index, msg.IsAlive)
 	if !msg.IsAlive {
 		return fmt.Errorf("message is not alive, re-queuing")
 	} else {
