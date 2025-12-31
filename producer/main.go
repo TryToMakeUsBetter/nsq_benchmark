@@ -15,7 +15,7 @@ import (
 // 2
 // 3
 // 4
-// 5
+// 6
 func main() {
 	//TenProducerTenTopic400Msg(core.GobalCore.NsqList)
 	OneProducerOneTopic(core.GobalCore.NsqList)
